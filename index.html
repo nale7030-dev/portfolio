@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XUÂN VÂN - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+       body {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+         position: sticky;
+    top: 0;
+    background: rgba(77, 184, 255, 0.95);
+    z-index: 100;
+    /* =================== */
+}
+/* === Hiệu ứng di chuột === */
+
+/* Hiệu ứng cho ảnh sở thích */
+.hobby-img img {
+    transition: all 0.3s ease;
+}
+.hobby-img img:hover {
+    transform: scale(1.08);
+    opacity: 0.9;
+}
+
+/* Hiệu ứng cho nút bấm */
+button, .social-buttons button {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+button:hover, .social-buttons button:hover {
+    transform: translateY(-2px);
+    background: #0066cc;
+    color: white;
+}
+
+/* Hiệu ứng cho menu */
+nav a {
+    transition: all 0.2s ease;
+}
+nav a:hover {
+    color: white;
+    text-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+/* Hiệu ứng cho thẻ thông tin */
+.profile-card, .contact-info, .contact-form {
+    transition: all 0.3s ease;
+}
+.profile-card:hover, .contact-info:hover, .contact-form:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+
+        nav a {
+            color: #000;
+            text-decoration: none;
+            font-size: 18px;
+            margin-left: 30px;
+            font-weight: 600;
+        }
+
+        section {
+            padding: 20px 40px 60px;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .hi-badge {
+            background: #32cd32;
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .greeting {
+            font-size: 20px;
+            font-style: italic;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 8px;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 17px;
+        }
+
+        .info-label {
+            width: 100px;
+            font-weight: 600;
+        }
+
+        .avatar-placeholder {
+            width: 180px;
+            height: 180px;
+            background: transparent;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-circle {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        .section-title {
+            font-size: 26px;
+            margin: 40px 0 20px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #000;
+            margin-bottom: 30px;
+        }
+
+        .hobbies-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hobby-item {
+            text-align: center;
+        }
+
+        .hobby-label {
+            background: #90ee90;
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hobby-img {
+            width: 260px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .hobby-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 0 auto;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(0, 80, 140, 0.25);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(0, 40, 80, 0.25);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+        }
+
+        .contact-form button {
+            background: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 14px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .social-buttons {
+            margin-top: 10px;
+        }
+
+        .social-buttons button {
+            margin: 5px;
+            padding: 6px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">XANVA</div>
+        <nav>
+            <a href="#trang-chu">TRANG CHỦ</a>
+            <a href="#ban-than">BẢN THÂN</a>
+            <a href="#so-thich">SỞ THÍCH</a>
+            <a href="#lien-he">LIÊN HỆ</a>
+        </nav>
+    </header>
+
+    <section id="trang-chu">
+        <div class="profile-card">
+            <div class="profile-info">
+                <span class="hi-badge">HI!</span>
+                <h2 class="greeting">Sinh viên năm 2</h2>
+                
+                <div class="info-row">
+                    <span class="info-label">NAME</span>
+                    <span>LÊ XUÂN VĂN</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">D.O.B</span>
+                    <span>16-09-2007</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">PHONE</span>
+                    <span>0392330680</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">E-MAIL</span>
+                    <span>van********5@gmail.com</span>
+                </div>
+            </div>
+            <div class="avatar-placeholder">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.PTi_9JRys1alUXM3dnU_cgHaHa?r=0&pid=Api&h=220&P=0" alt="Ảnh đại diện" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+</div>
+        </div>
+    </section>
+
+    <section id="ban-than">
+    <h2 class="section-title">👤 BẢN THÂN</h2>
+    <div class="divider"></div>
+
+    <div style="max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.25); border-radius: 12px; padding: 30px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.4);">
+        
+        <div style="text-align: right; margin-bottom: 25px;">
+            <h2 style="font-size: 42px; font-weight: bold; letter-spacing: 2px; margin: 0; color: #222;">🏫 💤🎧🎮</h2>
+        </div>
+
+        <div style="display: flex; gap: 25px; margin-bottom: 25px; align-items: center;">
+            <div style="flex: 1;">
+                <img src="https://st.ielts-fighter.com/src/ielts-fighter-image/2023/04/25/427ade3d-08a0-4457-baef-d758e1785f32.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+            </div>
+            <div style="flex: 1;">
+                <h3 style="font-size: 22px; margin: 0 0 12px 0; color: #111;">✨ Một chút về mình</h3>
+                <p style="font-size: 15px; line-height: 1.8; color: #333;">
+                    Xin chào! 👋 Mình hiện là sinh viên năm 2 ngành Công Nghệ Thông Tin tại trường Đại học Vinh.
+                </p>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 25px; align-items: center;">
+            <div style="flex: 1;">
+                <h3 style="font-size: 20px; margin: 0 0 12px 0; color: #111;">❤️ĐIỀU MÌNH YÊU THÍCH</h3>
+                <p style="font-size: 15px; line-height: 1.8; color: #333;">
+                    Ngoài học tập, mình luôn dành thời gian cho ngủ ngủ và ngủ để luôn giữ tinh thần tích cực và theo đuổi đam mê của mình! ✨
+                </p>
+            </div>
+            <div style="flex: 1;">
+                <img src="https://www.anhnghethuatdulich.com/wp-content/uploads/2025/09/anh-am-nhac.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <section id="so-thich">
+        <h2 class="section-title">✨ SỞ THÍCH</h2>
+        <div class="divider"></div>
+        
+        <div class="hobbies-container">
+            <div class="hobby-item">
+                <div class="hobby-label">Nghe Nhạc</div>
+                <div class="hobby-img">
+                    <img src="https://img4.thuthuatphanmem.vn/uploads/2020/12/26/hinh-anh-lang-nghe-am-nhac_050509522.jpg" alt="Nghe nhạc">
+                </div>
+            </div>
+            <div class="hobby-item">
+                <div class="hobby-label">Xem Phim</div>
+                <div class="hobby-img">
+                    <img src="https://cdn.vietnammoi.vn/2019/11/26/dich-vu-xem-phim-ban-quyen-truc-tuyen-6-15747858765551933758519.png" alt="Xem phim">
+                </div>
+            </div>
+            <div class="hobby-item">
+                <div class="hobby-label">Chơi Game</div>
+                <div class="hobby-img">
+                    <img src="https://png.pngtree.com/background/20230403/original/pngtree-virtual-gaming-concept-displays-futuristic-vector-picture-image_2293053.jpg" alt="Chơi game">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lien-he">
+        <h2 class="section-title">📩 LIÊN HỆ VỚI TÔI</h2>
+        <div class="divider"></div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <p>📧 Email: van*********@gmail.com</p>
+                <p>🏠 Địa chỉ: Quận ..., TP.Vinh</p>
+                <p>📞 Điện thoại: 0392330680</p>
+                <p>💬 Zalo: 0123456670</p>
+            </div>
+            
+            <div class="contact-form">
+                <input type="text" placeholder="Họ và Tên">
+                <input type="email" placeholder="E-mail">
+                <textarea placeholder="Nội dung..." rows="4"></textarea>
+                <button>Gửi đi</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>LÊ XUÂN VĂN</strong></p>
+        <p>Sinh viên Công nghệ thông tin - Lớp 66K3 CNTT,</p>
+        <p>Trường Đại học Vinh.</p>
+        <p style="margin-top:8px;">© 2026 LÊ XUÂN VĂN - Đồ án cá nhân lớp LTW_02. All rights reserved.</p>
+        <div class="social-buttons">
+    <a href="https://facebook.com" target="_blank">
+        <button>Facebook</button>
+    </a>
+    <a href="https://instagram.com" target="_blank">
+        <button>Instagram</button>
+    </a>
+</div>
+    </footer>
+    <a href="#" style="position: fixed; bottom: 25px; right: 25px; background: #0066cc; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: bold; font-size: 18px; z-index: 999; box-shadow: 0 3px 10px rgba(0,0,0,0.2);">↑</a>
+</body>
+</html>
